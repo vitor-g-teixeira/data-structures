@@ -21,6 +21,31 @@ public class List {
         this.add();
     }
     
+    // isso vai dar mto erro
+    public void addElementByPos(int value, int pos){
+        if(this.isEmpty() || this.size == 1) this.addElement(value);
+        else if(pos == this.size) this.addElement(value);
+        else if(pos > this.size){
+            System.out.println("Specified position is bigger than the list. Adding as last element");
+            this.addElement(value);
+        }else{
+            ListNode beforeElement = this.firstElement;
+            ListNode newElement = new ListNode();
+            ListNode afterElement = beforeElement.getNext();
+            int count = 0;
+
+            while(count != pos){
+                beforeElement = afterElement;
+                afterElement = afterElement.getNext();
+                count++;
+            }
+            
+            newElement.setValue(value);
+            beforeElement.setNext(newElement);
+            newElement.setNext(afterElement);
+        }
+    }
+    
     public int removeFirst(){
         if(this.isEmpty()){
             System.out.println("List is empty; return -1");
@@ -104,11 +129,24 @@ public class List {
         }
         return toShow.getValue();
     }
-    /*
+    
     public String print(){
+        if(this.isEmpty()) return "[]";
         
+        int count = 0;
+        String result = "[";
+        ListNode currentDraw = this.firstElement;
+        
+        while(count != this.size){
+            result = result + " " + currentDraw.getValue() + ",";
+            
+            currentDraw = currentDraw.getNext();
+            count++;
+        }
+        result = result + " " + currentDraw.getValue() + " ]";
+        return result;
     }
-    */
+    
     
     public int getSize(){
         return this.size;
@@ -123,7 +161,7 @@ public class List {
     }
     
     public boolean isEmpty(){
-        if(size == 0) return true;
+        if(size == -1) return true;
         return false;
     }
 }
