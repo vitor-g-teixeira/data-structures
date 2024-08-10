@@ -24,26 +24,20 @@ public class List {
     // isso vai dar mto erro
     public void addElementByPos(int value, int pos){
         if(this.isEmpty() || this.size == 1) this.addElement(value);
-        else if(pos == this.size) this.addElement(value);
         else if(pos > this.size){
             System.out.println("Specified position is bigger than the list. Adding as last element");
             this.addElement(value);
-        }else{
-            ListNode beforeElement = this.firstElement;
-            ListNode newElement = new ListNode();
-            ListNode afterElement = beforeElement.getNext();
+        }else if(pos < 0) System.out.println("Invalid position");
+        else{
+            ListNode newValueElement = this.firstElement;
             int count = 0;
 
             while(count != pos){
-                beforeElement = afterElement;
-                afterElement = afterElement.getNext();
+                newValueElement = newValueElement.getNext();
                 count++;
             }
             
-            newElement.setValue(value);
-            beforeElement.setNext(newElement);
-            newElement.setNext(afterElement.getNext());
-            this.add();
+            newValueElement.setValue(value);
         }
     }
     
@@ -141,10 +135,11 @@ public class List {
         
         while(count != this.size){
             result = result + " " + currentDraw.getValue() + ",";
+            if(currentDraw.getNext() != null) currentDraw = currentDraw.getNext();
             
-            currentDraw = currentDraw.getNext();
             count++;
         }
+        
         result = result + " " + currentDraw.getValue() + " ]";
         return result;
     }

@@ -10,7 +10,7 @@ public class ListMain {
         myList.addElement(0);
         System.out.println(myList.print());
         
-        myList.addElementByPos(10, 0);
+        myList.addElementByPos(10, 3);
         System.out.println(myList.print());
     }
     
