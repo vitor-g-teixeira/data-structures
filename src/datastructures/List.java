@@ -2,8 +2,12 @@ package datastructures;
 
 public class List {
     
-    private int size = -1;
+    // list attributes
+    
+    private int size = -1; // initialized as -1 so the 1st element is on pos 0, 2nd on pos 1, and so on.
     private ListNode firstElement;
+    
+    // adding elements on the list
     
     public void addElement(int value){
         ListNode newElement = new ListNode();
@@ -21,9 +25,8 @@ public class List {
         this.add();
     }
     
-    // isso vai dar mto erro
     public void addElementByPos(int value, int pos){
-        if(this.isEmpty() || this.size == 1) this.addElement(value);
+        if(this.isEmpty() || this.size == 0) this.addElement(value);
         else if(pos > this.size){
             System.out.println("Specified position is bigger than the list. Adding as last element");
             this.addElement(value);
@@ -41,6 +44,8 @@ public class List {
         }
     }
     
+    // removing elements from the list
+    
     public int removeFirst(){
         if(this.isEmpty()){
             System.out.println("List is empty; return -1");
@@ -53,7 +58,7 @@ public class List {
     }
     
     public int removeLast(){
-        if(this.size == 1 || this.isEmpty()){
+        if(this.size == 0 || this.isEmpty()){
             return this.removeFirst();
         }
         this.remove();
@@ -68,15 +73,14 @@ public class List {
     }
     
     public int removeByPos(int pos){
-        if(this.isEmpty() || this.size == 1) return this.removeFirst();
-        else if(pos > size){
+        if(this.isEmpty() || this.size == 0 || pos == 0) return this.removeFirst();
+        else if(pos > this.size){
             System.out.println("Specified position is bigger than the list. Removing the last element");
             return this.removeLast();
-        }else if(pos == size){
+        }else if(pos == this.size){
             return this.removeLast();
         }
-        this.remove();
-        int count = 1;
+        int count = 0;
         ListNode beforeRemovedNode = new ListNode();
         ListNode removedNode = this.firstElement;
         ListNode afterRemovedNode = new ListNode();
@@ -87,8 +91,11 @@ public class List {
             count++;
         }
         beforeRemovedNode.setNext(afterRemovedNode);
+        this.remove();
         return removedNode.getValue();
     }
+    
+    // getting elements from the list
     
     public int getFirstElement(){
         if(this.isEmpty()){
@@ -111,13 +118,13 @@ public class List {
     }
     
     public int getElementByPos(int pos){
-        if(this.isEmpty() || pos == 1) return this.getFirstElement();
+        if(this.isEmpty() || pos == 0) return this.getFirstElement();
         else if(pos > this.size){
             System.out.println("Specified position is bigger than the list. Returning the last element");
             return this.getLastElement();
         }else if(pos == this.size) return this.getLastElement();
         ListNode toShow = this.firstElement;
-        int count = 1;
+        int count = 0;
         while (count != pos){
             toShow = toShow.getNext();
             count++;
@@ -125,7 +132,7 @@ public class List {
         return toShow.getValue();
     }
     
-    // também está com erro
+    // printing the list
     public String print(){
         if(this.isEmpty()) return "[]";
         
@@ -144,10 +151,7 @@ public class List {
         return result;
     }
     
-    
-    public int getSize(){
-        return this.size;
-    }
+    // simple methods
     
     private void add(){
         this.size++;
@@ -157,8 +161,12 @@ public class List {
         this.size--;
     }
     
+     public int length(){
+        return this.size + 1;
+    }
+     
     public boolean isEmpty(){
-        if(size == -1) return true;
+        if(this.size == -1) return true;
         return false;
     }
 }
