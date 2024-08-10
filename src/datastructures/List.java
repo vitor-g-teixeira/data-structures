@@ -42,7 +42,8 @@ public class List {
             
             newElement.setValue(value);
             beforeElement.setNext(newElement);
-            newElement.setNext(afterElement);
+            newElement.setNext(afterElement.getNext());
+            this.add();
         }
     }
     
@@ -130,6 +131,7 @@ public class List {
         return toShow.getValue();
     }
     
+    // também está com erro
     public String print(){
         if(this.isEmpty()) return "[]";
         

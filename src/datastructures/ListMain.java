@@ -9,6 +9,9 @@ public class ListMain {
         myList.addElement(2);
         myList.addElement(0);
         System.out.println(myList.print());
+        
+        myList.addElementByPos(10, 0);
+        System.out.println(myList.print());
     }
     
 }
