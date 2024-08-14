@@ -6,6 +6,7 @@ Implementado em Java.
 
 ## Acesso ao código das estruturas já implementadas
 ### Listas
-- [Nodo das Listas](https://github.com/vitor-g-teixeira/data-structures/blob/main/src/datastructures/Listas/ListNode.java)
-- [Listas](https://github.com/vitor-g-teixeira/data-structures/blob/main/src/datastructures/Listas/List.java)
-- [Conversa com GPT](https://github.com/vitor-g-teixeira/data-structures/blob/main/src/datastructures/Listas/GPT%20Instructions.md)
+data-structures/src/datastructures/lista/
+- [Nodo das Listas](https://github.com/vitor-g-teixeira/data-structures/blob/main/src/datastructures/lista/ListNode.java)
+- [Lista](https://github.com/vitor-g-teixeira/data-structures/blob/main/src/datastructures/lista/List.java)
+- [Conversa com GPT](https://github.com/vitor-g-teixeira/data-structures/blob/main/src/datastructures/lista/GPT%20Instructions.md)
