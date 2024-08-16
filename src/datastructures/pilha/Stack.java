@@ -10,7 +10,7 @@ public class Stack {
         stackElements.addElement(value);
     }
     
-    public int pop()throws EmptyStackException {
+    public int pop() throws EmptyStackException {
         if(!this.stackElements.isEmpty()){
             int last = this.stackElements.getLastElement();
             this.stackElements.removeLast();
@@ -20,12 +20,15 @@ public class Stack {
         }
     }
     
-    public int peek(){
-        return this.stackElements.getLastElement();
+    public int peek() throws EmptyStackException {
+        if(!this.isEmpty()) return this.stackElements.getLastElement();
+        else{
+            EmptyStackException e = new EmptyStackException();
+            throw e;
+        }
     }
     
     public boolean isEmpty(){
         return this.stackElements.isEmpty();
     }
-    
 }

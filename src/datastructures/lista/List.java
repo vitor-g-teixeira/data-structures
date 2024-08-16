@@ -33,6 +33,7 @@ public class List {
             IndexOutOfBoundsException e = new IndexOutOfBoundsException();
             throw e;
         }
+
         else{
             ListNode newValueElement = this.firstElement;
             int count = 0;
@@ -105,9 +106,8 @@ public class List {
     }
     
     public int getLastElement(){
-        if(this.isEmpty()){
-            return -1;
-        }
+        if(this.isEmpty()) return -1;
+        
         ListNode toShow = this.firstElement;
         while(toShow.getNext() != null){
             toShow = toShow.getNext();
@@ -117,9 +117,9 @@ public class List {
     
     public int getElementByPos(int pos){
         if(this.isEmpty() || pos == 0) return this.getFirstElement();
-        else if(pos > this.size){
-            return this.getLastElement();
-        }else if(pos == this.size) return this.getLastElement();
+        else if(pos > this.size) return this.getLastElement();
+        else if(pos == this.size) return this.getLastElement();
+        
         ListNode toShow = this.firstElement;
         int count = 0;
         while (count != pos){
